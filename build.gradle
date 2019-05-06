@@ -1,0 +1,42 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath shared.spring.gradlePlugin
+    }
+}
+
+plugins {
+    id 'java'
+}
+
+group 'com.codegamesleep'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'org.springframework.boot'
+
+apply from: 'dependencies.gradle'
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main.java.srcDir "src/main/java"
+    main.resources.srcDir "src/main/resources"
+    tests.java.srcDir "src/test/java"
+}
+
+dependencies {
+    implementation shared.spring.parent
+    implementation shared.spring.webflux
+
+    testCompile shared.junit.junit
+    testCompile shared.spring.test
+}

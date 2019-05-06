@@ -1,0 +1,19 @@
+ext {
+    versions = [
+            boot:   '2.1.4.RELEASE',
+            junit:  '4.1.2'
+    ]
+
+    shared = [
+            spring: [
+                    gradlePlugin    :   "org.springframework.boot:spring-boot-gradle-plugin:${versions.boot}",
+                    parent          :   "org.springframework.boot:spring-boot-starter-parent:${versions.boot}",
+                    webflux         :   "org.springframework.boot:spring-boot-starter-webflux:${versions.boot}",
+                    test            :   "org.springframework.boot:spring-boot-starter-test:${versions.boot}"
+            ],
+
+            junit: [
+                    junit: "junit:junit:${versions.junit}"
+            ]
+    ]
+}
