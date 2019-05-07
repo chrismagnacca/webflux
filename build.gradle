@@ -1,42 +1,57 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath shared.spring.gradlePlugin
-    }
-}
-
-plugins {
-    id 'java'
-}
-
-group 'com.codegamesleep'
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
-
-apply plugin: 'idea'
 apply plugin: 'java'
-apply plugin: 'application'
-apply plugin: 'org.springframework.boot'
 
-apply from: 'dependencies.gradle'
+allprojects {
+    apply from: "${rootDir}/dependencies.gradle"
+}
+
+subprojects {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        maven {
+            name "dynamo"
+            url "https://s3-us-west-2.amazonaws.com/dynamodb-local/release"
+        }
+    }
+}
 
 repositories {
     mavenCentral()
 }
 
-sourceSets {
-    main.java.srcDir "src/main/java"
-    main.resources.srcDir "src/main/resources"
-    tests.java.srcDir "src/test/java"
+project(':SpringWebMvc') {
+    group   'com.codegamesleep'
+    version '1.0-SNAPSHOT'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    sourceSets {
+        main.java.srcDir "src/main/java"
+        main.resources.srcDir "src/main/resources"
+        tests.java.srcDir "src/test/java"
+    }
 }
 
-dependencies {
-    implementation shared.spring.parent
-    implementation shared.spring.webflux
+project(':SpringWebFlux') {
+    group   'com.codegamesleep'
+    version '1.0-SNAPSHOT'
 
-    testCompile shared.junit.junit
-    testCompile shared.spring.test
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    sourceSets {
+        main.java.srcDir "src/main/java"
+        main.resources.srcDir "src/main/resources"
+        tests.java.srcDir "src/test/java"
+    }
+}
+
+project(':SpringWebGatling') {
+    group   'com.codegamesleep'
+    version '1.0-SNAPSHOT'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
 }

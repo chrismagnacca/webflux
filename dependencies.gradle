@@ -1,19 +1,33 @@
 ext {
     versions = [
-            boot:   '2.1.4.RELEASE',
-            junit:  '4.1.2'
+            boot    :   '2.1.4.RELEASE',
+            gatling :   '3.0.2',
+            junit   :   '4.1.2',
+            scala   :   '2.11.8',
+            spring  :   '5.1.6.RELEASE'
     ]
 
     shared = [
+            gradle: [
+                    gatling         :   "gradle.plugin.com.github.lkishalmi.gatling:gradle-gatling-plugin:${versions.gatling}"
+            ],
+
             spring: [
+                    core            :   "org.springframework:spring-core:${versions.spring}",
                     gradlePlugin    :   "org.springframework.boot:spring-boot-gradle-plugin:${versions.boot}",
                     parent          :   "org.springframework.boot:spring-boot-starter-parent:${versions.boot}",
+                    mvc             :   "org.springframework:spring-webmvc:${versions.spring}",
                     webflux         :   "org.springframework.boot:spring-boot-starter-webflux:${versions.boot}",
+                    web             :   "org.springframework.boot:spring-boot-starter-web:${versions.boot}",
                     test            :   "org.springframework.boot:spring-boot-starter-test:${versions.boot}"
             ],
 
             junit: [
                     junit: "junit:junit:${versions.junit}"
+            ],
+
+            scala: [
+                    lang: "org.scala-lang:scala-library:${versions.scala}"
             ]
     ]
 }

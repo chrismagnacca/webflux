@@ -1,0 +1,31 @@
+plugins {
+    id "com.github.lkishalmi.gatling" version "3.0.2"
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'scala'
+
+dependencies {
+    compile 'org.scala-lang:scala-library:'
+}
+
+gatling {
+    simulations {
+        include "**/*Simulation*.scala"
+    }
+    jvmArgs = ['-server',
+               '-Xmx1G',
+               '-XX:+UseG1GC', '-XX:MaxGCPauseMillis=30', 
+               '-XX:G1HeapRegionSize=16m', 
+               '-XX:InitiatingHeapOccupancyPercent=75',
+               '-XX:+ParallelRefProcEnabled',
+               '-XX:+PerfDisableSharedMem',
+               '-XX:+AggressiveOpts',
+               '-XX:+OptimizeStringConcat',
+               '-XX:+HeapDumpOnOutOfMemoryError',
+               '-Djava.net.preferIPv4Stack=true',
+               '-Djava.net.preferIPv6Addresses=false']
+}

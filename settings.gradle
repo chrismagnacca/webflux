@@ -1,1 +1,5 @@
 rootProject.name = 'reactive'
+
+include ":SpringWebMvc",
+        ":SpringWebFlux",
+        ":SpringWebGatling"
