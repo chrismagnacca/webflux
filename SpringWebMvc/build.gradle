@@ -1,0 +1,21 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath shared.spring.gradlePlugin
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    implementation shared.spring.core
+    implementation shared.spring.parent
+    implementation shared.spring.mvc
+    implementation shared.spring.web
+
+    testCompile shared.junit.junit
+    testCompile shared.spring.test
+}
