@@ -64,7 +64,3 @@ reactive $ ./gradlew :SpringWebGatling:gatlingRun
 <br>
 
 * Examine Simulation results in `build/reports` 
-
-## Using Perfmon to gather Host Metrics
-
-* `TODO`
